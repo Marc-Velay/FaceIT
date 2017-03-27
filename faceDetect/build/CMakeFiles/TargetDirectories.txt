@@ -1,0 +1,3 @@
+/home/gniorg/Documents/FaceIT/build/CMakeFiles/edit_cache.dir
+/home/gniorg/Documents/FaceIT/build/CMakeFiles/rebuild_cache.dir
+/home/gniorg/Documents/FaceIT/build/CMakeFiles/faceDetect.dir

@@ -48,9 +48,36 @@ bool GetDirectoryContents(const std::string & sPath, list<std::string> &sContent
     return true;
 }
 
-int main(int,.char**){
-    std::string sImagePath = "../media/";
+int main(int, char**){
+    std::string sVideoPath = "../media/";
     list<std::string> sContents;
     list<std::string>::iterator i;
-    GetDirectoryContents(sImagePath,sContents);
+    GetDirectoryContents(sVideoPath,sContents);
+
+    std::string videoFilename;
+    
+    i = sContents.begin();
+    int size = sContents.size();
+    namedWindow("Video",1);
+    moveWindow("Video", 0, 0);
+
+    while( i != sContents.end()) {
+        videoFilename = *i; ++i;
+
+        VideoCapture cap(sVideoPath+ videoFilename); // open the default camera
+        if(!cap.isOpened())  // check if we succeeded
+            return -1;
+
+        Mat frame;
+
+        int frameNb = cap.get(CV_CAP_PROP_FRAME_COUNT);
+        for(int j =0; j < frameNb; ++i) {
+            cap >> frame;
+            imshow("Video", frame);
+            if(waitKey(20) >= 0) break;
+        }
+
+    }
+    destroyAllWindows();
+    return 0;
 }
